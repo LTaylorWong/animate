@@ -96,9 +96,7 @@ def second_pass( commands, num_frames ):
 
 
 def run(filename):
-    """
-    This function runs an mdl script
-    """
+    #This function runs an mdl script
     color = [255, 255, 255]
     tmp = new_matrix()
     ident( tmp )
