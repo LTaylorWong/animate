@@ -201,4 +201,8 @@ def run(filename):
                 
             matrix_mult( stack[-1], t )
             stack[-1] = t
+
+        if command[0] == "frames":
+        if command[0] == "basename":
+        if command[0] == "vary":
             
