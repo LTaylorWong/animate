@@ -115,6 +115,10 @@ def run(filename):
     screen = new_screen()    
         
     for command in commands:
+        
+        if command[0] == "frames":
+        if command[0] == "basename":
+        if command[0] == "vary":
         if command[0] == "pop":
             stack.pop()
             if not stack:
@@ -175,6 +179,8 @@ def run(filename):
             xval = command[1]
             yval = command[2]
             zval = command[3]
+            if command[4] != NULL:
+                
                     
             t = make_translate(xval, yval, zval)
             matrix_mult( stack[-1], t )
@@ -184,6 +190,7 @@ def run(filename):
             xval = command[1]
             yval = command[2]
             zval = command[3]
+            if command[4] != NULL:
 
             t = make_scale(xval, yval, zval)
             matrix_mult( stack[-1], t )
@@ -197,12 +204,10 @@ def run(filename):
             elif command[1] == 'y':
                 t = make_rotY( angle )
             elif command[1] == 'z':
-                t = make_rotZ( angle )            
+                t = make_rotZ( angle )
+            if command[2] != NULL:
                 
             matrix_mult( stack[-1], t )
             stack[-1] = t
 
-        if command[0] == "frames":
-        if command[0] == "basename":
-        if command[0] == "vary":
             
