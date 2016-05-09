@@ -73,7 +73,8 @@ from draw import *
   jdyrlandweaver
   ==================== """
 def first_pass( commands ):
-        
+    if command[0] == "basename":
+    if command[0] == "vary":
 
 """======== second_pass( commands ) ==========
 
@@ -93,7 +94,7 @@ def first_pass( commands ):
   appropirate value. 
   ===================="""
 def second_pass( commands, num_frames ):
-
+if command[0] == "frames":
 
 def run(filename):
     #This function runs an mdl script
@@ -114,9 +115,8 @@ def run(filename):
         
     for command in commands:
         
-        if command[0] == "frames":
-        if command[0] == "basename":
-        if command[0] == "vary":
+        
+  
         if command[0] == "pop":
             stack.pop()
             if not stack:
