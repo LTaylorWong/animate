@@ -1,60 +1,42 @@
 """========== script.py ==========
-
   This is the only file you need to modify in order
   to get a working mdl project (for now).
-
+  
   my_main.c will serve as the interpreter for mdl.
   When an mdl script goes through a lexer and parser, 
   the resulting operations will be in the array op[].
-
   Your job is to go through each entry in op and perform
   the required action from the list below:
 
   frames: set num_frames for animation
-
   basename: set name for animation
-
   vary: manipluate knob values between two given frames
         over a specified interval
-
   set: set a knob to a given value
-  
   setknobs: set all knobs to a given value
-
   push: push a new origin matrix onto the origin stack
-  
   pop: remove the top matrix on the origin stack
-
   move/scale/rotate: create a transformation matrix 
                      based on the provided values, then 
 		     multiply the current top of the
 		     origins stack by it.
-
   box/sphere/torus: create a solid object based on the
                     provided values. Store that in a 
 		    temporary matrix, multiply it by the
 		    current top of the origins stack, then
 		    call draw_polygons.
-
   line: create a line based on the provided values. Store 
         that in a temporary matrix, multiply it by the
 	current top of the origins stack, then call draw_lines.
-
   save: call save_extension with the provided filename
-
   display: view the image live
   
   jdyrlandweaver
   ========================="""
-
-
-
 import mdl
 from display import *
 from matrix import *
 from draw import *
-
-
 """======== first_pass( commands, symbols ) ==========
 
   Checks the commands array for any animation commands
@@ -73,8 +55,38 @@ from draw import *
   jdyrlandweaver
   ==================== """
 def first_pass( commands ):
-    if command[0] == "basename":
-    if command[0] == "vary":
+    frames_check = []
+    basename_check = []
+    vary_check = []
+
+   for c in commands:
+          if(c[0]=="frames"):
+              if(len(frames_check) != 0 ):
+                print "ERROR: May only call 'frames' once"
+                sys.exit(0)
+              frames_check = c
+        elif c[0] == "basename":
+            if (len(basename_check) != 0):
+                print "ERROR: May only call 'basename' once"
+                sys.exit(0)
+            basename_check = c
+        elif c[0] == "vary":
+            if(len(frames_check) == 0 ):
+                print "Number of frames must be declared before vary"
+                sys.exit(0)
+             vary_check = c
+    if len(frames_check) != 0:
+            global num_frames
+            num_frames = frames_check[1]
+            if len(basename_check):
+                global basename
+                basename = basename_check[1]
+            else:
+                global basename
+                basename = "base"
+                print("no basename found, default set to base")
+        elif len(vark_check)!=0:
+            sys.exit("Add frames command")
 
 """======== second_pass( commands ) ==========
 
@@ -94,7 +106,7 @@ def first_pass( commands ):
   appropirate value. 
   ===================="""
 def second_pass( commands, num_frames ):
-if command[0] == "frames":
+
 
 def run(filename):
     #This function runs an mdl script
