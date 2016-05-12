@@ -112,7 +112,7 @@ def second_pass( commands, num_frames ):
 		for c in commands:
             		if c[0]=="vary":
                 		if num_frames > c[2] and num_frames < c[3]:
-                    			knobs[f][c[1]] = (f-c[2])(c[5]-c[4])/(c[3]-c[2])
+                    			##knobs[f][c[1]] = (f-c[2])(c[5]-c[4])/(c[3]-c[2])
 def run(filename):
     #This function runs an mdl script
     color = [255, 255, 255]
