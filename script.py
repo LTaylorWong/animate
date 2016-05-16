@@ -59,22 +59,22 @@ def first_pass( commands ):
     basename_check = []
     vary_check = []
 
-   for c in commands:
-          if(c[0]=="frames"):
-              if(len(frames_check) != 0 ):
+    for c in commands:
+       if(c[0]=="frames"):
+           if(len(frames_check) != 0 ):
                 print "ERROR: May only call 'frames' once"
                 sys.exit(0)
-              frames_check = c
-        elif c[0] == "basename":
+                frames_check = c
+       elif (c[0] == "basename"):
             if (len(basename_check) != 0):
                 print "ERROR: May only call 'basename' once"
                 sys.exit(0)
-            basename_check = c
-        elif c[0] == "vary":
+                basename_check = c
+       elif (c[0] == "vary"):
             if(len(frames_check) == 0 ):
                 print "Number of frames must be declared before vary"
                 sys.exit(0)
-             vary_check = c
+                vary_check = c
     if len(frames_check) != 0:
             global num_frames
             num_frames = frames_check[1]
@@ -85,7 +85,7 @@ def first_pass( commands ):
                 global basename
                 basename = "base"
                 print("no basename found, default set to base")
-        elif len(vark_check)!=0:
+    elif len(vary_check)!=0:
             sys.exit("Add frames command")
 
 """======== second_pass( commands ) ==========
@@ -113,6 +113,7 @@ def second_pass( commands, num_frames ):
             		if c[0]=="vary":
                 		if num_frames > c[2] and num_frames < c[3]:
                     			##knobs[f][c[1]] = (f-c[2])(c[5]-c[4])/(c[3]-c[2])
+                                    
 def run(filename):
     #This function runs an mdl script
     color = [255, 255, 255]
@@ -131,8 +132,6 @@ def run(filename):
     screen = new_screen()    
         
     for command in commands:
-        
-        
   
         if command[0] == "pop":
             stack.pop()
