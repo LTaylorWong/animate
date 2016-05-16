@@ -106,14 +106,15 @@ def first_pass( commands ):
   appropirate value. 
   ===================="""
 knobs = []
+"""
 def second_pass( commands, num_frames ):
-	for f in range(num_frames):
-		knobs[f].append({})
-		for c in commands:
-            		if c[0]=="vary":
-                		if num_frames > c[2] and num_frames < c[3]:
-                    			##knobs[f][c[1]] = (f-c[2])(c[5]-c[4])/(c[3]-c[2])
-                                    
+    for f in range(num_frames):
+        knobs[f].append({})
+        for c in commands:
+            if c[0]=="vary":
+                if num_frames > c[2] and num_frames < c[3]:
+                    ##knobs[f][c[1]] = (f-c[2])(c[5]-c[4])/(c[3]-c[2])
+"""                                    
 def run(filename):
     #This function runs an mdl script
     color = [255, 255, 255]
@@ -194,21 +195,18 @@ def run(filename):
             yval = command[2]
             zval = command[3]
             if command[4] != NULL:
-                
-                    
-            t = make_translate(xval, yval, zval)
-            matrix_mult( stack[-1], t )
-            stack[-1] = t
+                t = make_translate(xval, yval, zval)
+                matrix_mult( stack[-1], t )
+                stack[-1] = t
 
         if command[0] == "scale":
             xval = command[1]
             yval = command[2]
             zval = command[3]
             if command[4] != NULL:
-
-            t = make_scale(xval, yval, zval)
-            matrix_mult( stack[-1], t )
-            stack[-1] = t
+                t = make_scale(xval, yval, zval)
+                matrix_mult( stack[-1], t )
+                stack[-1] = t
             
         if command[0] == "rotate":
             angle = command[2] * (math.pi / 180)
@@ -220,8 +218,7 @@ def run(filename):
             elif command[1] == 'z':
                 t = make_rotZ( angle )
             if command[2] != NULL:
-                
-            matrix_mult( stack[-1], t )
-            stack[-1] = t
+                matrix_mult( stack[-1], t )
+                stack[-1] = t
 
             
